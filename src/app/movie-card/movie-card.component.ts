@@ -12,16 +12,18 @@ export class MovieCardComponent implements OnInit {
 
   constructor(public fetchApiData: UserRegistrationService) { }
 
-  ngOnInit(): void {
-    this.getMovies()
-  }
+    ngOnInit(): void {
+      this.getMovies()
+    }
 
-  getMovies(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(resp);
-      return this.movies
-    })
-  }
+    getMovies(): void {
+      this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+        this.movies = resp;
+        console.log(resp);
+        return this.movies
+      })
+    }
+
+
 
 }

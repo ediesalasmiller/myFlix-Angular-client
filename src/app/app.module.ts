@@ -31,10 +31,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 //icon for add to favorites
 import { MatIconModule } from '@angular/material/icon';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -45,7 +49,10 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     MovieCardComponent,
     UserLoginFormComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    UserProfileComponent,
+    UpdateProfileComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
