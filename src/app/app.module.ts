@@ -22,11 +22,13 @@ import { FormsModule } from '@angular/forms';
 
 //create a user registration component, added to declarations array
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserRegistrationFormComponent
+    UserRegistrationFormComponent,
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,
