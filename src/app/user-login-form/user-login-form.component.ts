@@ -10,6 +10,10 @@ import { UserRegistrationService } from '../fetch-api-data.service'
 // displays notifications back to user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Router } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -17,25 +21,28 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserLoginFormComponent implements OnInit {
 
-  @Input() userData = { Username: '', Password: '', Email: '' } 
+  @Input() userData = { Username: '', Password: ''} 
 
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) { }
   ngOnInit(): void {
   }
 
   loginUser(): void {
+  
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
        this.dialogRef.close();
-       console.log(response)
+       console.log(response);
+       
        localStorage.setItem('token', response.token);
-      localStorage.setItem('user', response.user.Username);
-       this.snackBar.open('You are now logged in','OK', {
-        duration: 2000
-       });
+       localStorage.setItem('user', response.user.Username);
+        //redirecto to the movies page
+       this.router.navigate(['movies']);
+       
       
     }, (response) => {
       console.log(response);
