@@ -109,18 +109,18 @@ export class UserRegistrationService {
         catchError(this.handleError));
   }
 
-   getFavoriteMovies(_id: any): Observable<any> {
+   getFavoriteMovies(movieID: any): Observable<any> {
     return this.http
-      .get(apiUrl + `users/${currentUser}/favorites/${_id}`, {
+      .get(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
         headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   //add to favorite movies
-  public addFavorite(_id: any): Observable<any> {
+  public addFavorite(movieID: any): Observable<any> {
     return this.http
-      .put(apiUrl + `users/${currentUser}/movies/${_id}`, {
+      .put(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -144,7 +144,7 @@ export class UserRegistrationService {
   }
   
   //add to favorite movies
-  public deleteUser(username: any): Observable<any> {
+  public deleteUser(user: any): Observable<any> {
     return this.http
       .delete(apiUrl + `users/${currentUser}`, {
         headers: new HttpHeaders({
@@ -157,9 +157,9 @@ export class UserRegistrationService {
   }
 
    //delete to favorite movies
-  public deleteFavorite(_id: any): Observable<any> {
+  public deleteFavorite(movieID: any): Observable<any> {
     return this.http
-      .delete(apiUrl + `users/${currentUser}/movies/${_id}`, {
+      .delete(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
