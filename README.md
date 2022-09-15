@@ -49,5 +49,5 @@ The aim of this project is to  build the client-side for an application called m
 * Angular Material
 * Typedoc
 * Technical documentation using JSDoc
-* Hosted on Github Pages
+* Hosted on Github Pages: https://ediesalasmiller.github.io/myFlix-Angular-client/
 

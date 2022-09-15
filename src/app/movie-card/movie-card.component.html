@@ -1,3 +1,4 @@
+<app-navbar class="app-navbar"></app-navbar>
 <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid">
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies;">
@@ -19,8 +20,7 @@
                     <button mat-button color="primary" (click)="openSynopsisDialog(movie.Title, movie.Description)">
                         Synopsis
                     </button>
-                    <button mat-button *ngIf="!isFav(movie._id)" (click)="addFavoriteMovies(movie._id)"
-                        color="primary">
+                    <button mat-button *ngIf="!isFav(movie._id)" (click)="addFavoriteMovies(movie._id)" color="primary">
                         <mat-icon>favorite_border</mat-icon>
                     </button>
                     <button mat-button *ngIf="isFav(movie._id)" (click)="removeFavoriteMovies(movie._id)"

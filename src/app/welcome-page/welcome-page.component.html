@@ -1,17 +1,22 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Welcome to MyFlix
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-actions>
-        <button mat-raised-button class="button-confirmation" color="primary" (click)="openUserLoginDialog()"
-            style="margin-right: 10px;">
-            Login here!
-        </button>
-        <button mat-raised-button class="button-confirmation" (click)="openUserRegistrationDialog()"
-            style="margin-right: 10px;" color="primary">
-            Sign Up
-        </button>
-    </mat-card-actions>
+<mat-card class="card-container" layout-align="center center">
+    <mat-card-content class="card-content">
+        <mat-card-header>
+            <mat-card-title>
+                Welcome to MyFlix
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+            <br>
+            <button mat-raised-button class="button-confirmation" color="primary" (click)="openUserLoginDialog()"
+                style="margin-right: 10px;">
+                Login here!
+            </button>
+            <br>
+            <br>
+            <button mat-raised-button class="button-confirmation" (click)="openUserRegistrationDialog()"
+                style="margin-right: 10px;" color="primary">
+                Sign Up
+            </button>
+        </mat-card-actions>
+    </mat-card-content>
 </mat-card>
