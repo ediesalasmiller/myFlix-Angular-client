@@ -21,8 +21,8 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  updateUser(): void {
-    this.fetchApiData.updateUser(this.userData).subscribe((result) => {
+  editUser(): void {
+    this.fetchApiData.getUser().subscribe((result) => {
       this.dialogRef.close();
       console.log(result);
       this.snackBar.open("Successfully Updated Profile!", 'OK', {

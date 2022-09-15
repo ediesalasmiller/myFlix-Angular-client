@@ -123,7 +123,7 @@ export class UserRegistrationService {
   }
 
   //Edit User info
-  public updateUser(username: any): Observable<any> {
+  public updateUser(user: any): Observable<any> {
     return this.http
       .put(apiUrl + 'users/:Username', {
         headers: new HttpHeaders({

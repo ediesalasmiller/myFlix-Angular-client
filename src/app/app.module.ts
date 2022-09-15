@@ -34,6 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DirectorComponent } from './director/director.component';
+import { GenreComponent } from './genre/genre.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -52,7 +54,9 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     UpdateProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    DirectorComponent,
+    GenreComponent
   ],
   imports: [
     BrowserModule,

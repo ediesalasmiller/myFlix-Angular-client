@@ -47,7 +47,7 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-   deleteUser(): void {
+   deleteProfile(): void {
     if (
       confirm(
         'Are you sure you want to delete your account? This cannnot be undone.'
