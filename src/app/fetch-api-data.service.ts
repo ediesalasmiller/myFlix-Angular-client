@@ -112,7 +112,9 @@ export class UserRegistrationService {
    getFavoriteMovies(movieID: any): Observable<any> {
     return this.http
       .get(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
-        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
@@ -120,7 +122,7 @@ export class UserRegistrationService {
   //add to favorite movies
   public addFavorite(movieID: any): Observable<any> {
     return this.http
-      .put(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
+      .post(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
