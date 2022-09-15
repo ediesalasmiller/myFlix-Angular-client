@@ -11,7 +11,7 @@ const apiUrl = 'https://edieflixdb.herokuapp.com/';
 //get token
 const token = localStorage.getItem('token');
 //get username stored in local storage
-const username = localStorage.getItem('username');
+const currentUser = localStorage.getItem('user');
 
 
 @Injectable({
@@ -99,7 +99,7 @@ export class UserRegistrationService {
   //get user profile , where favorite movies is stored
   public getUser(): Observable<any> {
     return this.http
-      .get(apiUrl + `users/${username}`, {
+      .get(apiUrl + `users/${currentUser}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -109,10 +109,18 @@ export class UserRegistrationService {
         catchError(this.handleError));
   }
 
-  //add to favorite movies
-  public addFavorite(movieID: any): Observable<any> {
+   getFavoriteMovies(_id: any): Observable<any> {
     return this.http
-      .put(apiUrl + `users/${username}/movies/${movieID}`, {
+      .get(apiUrl + `users/${currentUser}/favorites/${_id}`, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  //add to favorite movies
+  public addFavorite(_id: any): Observable<any> {
+    return this.http
+      .put(apiUrl + `users/${currentUser}/movies/${_id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -125,7 +133,7 @@ export class UserRegistrationService {
   //Edit User info
   public updateUser(user: any): Observable<any> {
     return this.http
-      .put(apiUrl + 'users/:Username', {
+      .put(apiUrl +  `users/${currentUser}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -138,7 +146,7 @@ export class UserRegistrationService {
   //add to favorite movies
   public deleteUser(username: any): Observable<any> {
     return this.http
-      .delete(apiUrl + `users/${username}`, {
+      .delete(apiUrl + `users/${currentUser}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
@@ -149,9 +157,9 @@ export class UserRegistrationService {
   }
 
    //delete to favorite movies
-  public deleteFavorite(movieID: any): Observable<any> {
+  public deleteFavorite(_id: any): Observable<any> {
     return this.http
-      .delete(apiUrl + `users/${username}/movies/${movieID}`, {
+      .delete(apiUrl + `users/${currentUser}/movies/${_id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })

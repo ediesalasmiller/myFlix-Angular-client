@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 //create a user registration component, added to declarations array
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
@@ -29,6 +31,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 //routing to welcome page 
 import { RouterModule, Routes } from '@angular/router';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 //icon for add to favorites
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -36,6 +39,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { NavbarComponent } from './navbar/navbar.component';
 import { DirectorComponent } from './director/director.component';
 import { GenreComponent } from './genre/genre.component';
+import { SynopsisComponent } from './synopsis/synopsis.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -56,7 +60,8 @@ const appRoutes: Routes = [
     UpdateProfileComponent,
     NavbarComponent,
     DirectorComponent,
-    GenreComponent
+    GenreComponent,
+    SynopsisComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,9 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

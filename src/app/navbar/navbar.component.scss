@@ -3,11 +3,13 @@ $cardColor: #fff;
 $textColor: #343a40;
 $boxShadowColor: #e9ecef;
 
-.nav-bar {
+.md-toolbar-tools {
     border-bottom: $boxShadowColor;
     background-color: $cardColor;
 }
 
 .logout-button {
     float: right;
+    align-self:flex-end;
+    
 }

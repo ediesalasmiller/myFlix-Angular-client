@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 
 import { UpdateProfileComponent } from '../update-profile/update-profile.component';
 
+//get username stored in local storage
+const currentUser = localStorage.getItem('user');
+
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -14,6 +18,8 @@ import { UpdateProfileComponent } from '../update-profile/update-profile.compone
 })
 export class UserProfileComponent implements OnInit {
     user: any = {};
+    favoriteMovies: any[] = [];
+    
  
    constructor(
     public fetchApiData: UserRegistrationService,
@@ -68,5 +74,5 @@ export class UserProfileComponent implements OnInit {
       });
     }
   }
-
+ 
 }

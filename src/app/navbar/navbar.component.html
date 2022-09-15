@@ -1,4 +1,4 @@
-<div class="nav-bar">
+<!-- <div class="nav-bar">
     <button mat-button (click)="goToMovies()">Movies</button>
     <span></span>
     <button mat-button (click)="goToProfile()">Profile</button>
@@ -6,4 +6,23 @@
     <button mat-button (click)="logOut()" class="logout-button">
         <mat-icon>logout</mat-icon> Logout
     </button>
+</div> -->
+
+<div layout="column" layout-fill="">
+    <mat-toolbar>
+
+        <div class="md-toolbar-tools">
+            <button mat-button (click)="goToMovies()">
+                Movies
+            </button>
+            <button mat-button (click)="goToProfile()">Profile</button>
+        </div>
+
+        <div>
+            <button mat-button (click)="logOut()" class="logout-button">
+                <mat-icon>logout</mat-icon> Logout
+            </button>
+        </div>
+
+    </mat-toolbar>
 </div>
