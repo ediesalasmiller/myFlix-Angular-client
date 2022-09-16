@@ -47,12 +47,21 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+   /**
+   * update existing user data 
+   * @returns new user data
+   * @function updateDialog
+   */
   updateDialog(): void {
     this.dialog.open(UpdateProfileComponent, {
       width: '300px'
     })
   }
 
+  /**
+   * @returns login screen, clearing local storage
+   * @function deleteProfile
+   */
    deleteProfile(): void {
     if (
       confirm(

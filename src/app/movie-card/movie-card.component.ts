@@ -27,7 +27,10 @@ export class MovieCardComponent implements OnInit {
     ngOnInit(): void {
       this.getMovies();
     }
-
+    /**
+    * opens the user director dialog from DirectorComponent to displaying details
+    * @return all movies
+    */
     getMovies(): void {
       this.fetchApiData.getAllMovies().subscribe((resp: any) => {
         this.movies = resp;

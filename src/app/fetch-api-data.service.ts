@@ -26,6 +26,14 @@ export class UserRegistrationService {
 
 
  // Making the api call for the user registration endpoint
+
+   /**
+   * @service POST to an API endpoint to register a new user
+   * @param {any} userDetails
+   * @returns a new user object in json format
+   * @function userRegistration
+   */
+
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
 
@@ -34,6 +42,14 @@ export class UserRegistrationService {
     );
   }
 
+   /**
+   * @service POST to an API endpoint to login a user
+   * @param {any} userDetails: any
+   * @returns user object JSON
+   * @function userLogin
+   * @returns
+   */
+
   public userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login', userDetails).pipe(
         catchError(this.handleError)
@@ -41,7 +57,12 @@ export class UserRegistrationService {
   }
 
 
-  //get all movies endpoint
+  
+  /**
+   * @service GET to an API endpoint to get all movies
+   * @returns an array of all movies in json format
+   * @function getAllMovies
+   */
   getAllMovies(): Observable<any> {
     return this.http
       .get(apiUrl + 'movies', {
@@ -55,7 +76,12 @@ export class UserRegistrationService {
       );
   }
   //get specific movie
-   // param: Title- {string}
+     /**
+   * @service GET to an API endpoint to get a movie by title
+   * @param {string} title
+   * @returns a an array of movie objects in json format
+   * @function getMovie
+   */
   public getMovie(title: any) : Observable<any> {
     return this.http
       .get(apiUrl + `movies/${title}`, {
@@ -70,7 +96,12 @@ export class UserRegistrationService {
   }
 
     // display director infortmation for specific movie
-    // param: Name- {string}
+      /**
+   * @service GET to an API endpoint to get a director by name
+   * @param {string} name
+   * @returns array of Director information
+   * @function getDirector
+   */
   public getDirector(name: any): Observable<any> {
     return this.http
       .get(apiUrl + `director/${name}`, {
@@ -84,7 +115,12 @@ export class UserRegistrationService {
   }
 
     //get genre
-     // param: genre- {string}
+    /**
+   * @service GET to an API endpoint to get a genre by name
+   * @param {string} name
+   * @returns array of genre information
+   * @function getGenre
+   */
   public getGenre(name: any): Observable<any> {
     return this.http
       .get(apiUrl + `genre/${name}`, {
@@ -97,6 +133,12 @@ export class UserRegistrationService {
         catchError(this.handleError));
   }
   //get user profile , where favorite movies is stored
+    /**
+   * @service GET to an API endpoint to get a specific user
+   * @returns a user object in json format
+   * @function getUser
+   */
+
   public getUser(): Observable<any> {
     return this.http
       .get(apiUrl + `users/${currentUser}`, {
@@ -109,30 +151,13 @@ export class UserRegistrationService {
         catchError(this.handleError));
   }
 
-   getFavoriteMovies(movieID: any): Observable<any> {
-    return this.http
-      .get(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        }),
-      })
-      .pipe(map(this.extractResponseData), catchError(this.handleError));
-  }
-
-  //add to favorite movies
-  public addFavorite(movieID: any): Observable<any> {
-    return this.http
-      .post(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        })
-      })
-      .pipe(
-        map(this.extractResponseData), 
-        catchError(this.handleError));
-  }
-
-  //Edit User info
+    //Edit User info
+   /**
+   * @service PUT to an API endpoint to update a user's details
+   * @param {string} user: any
+   * @returns user JSON object
+   * @function updateUser
+   */
   public updateUser(user: any): Observable<any> {
     return this.http
       .put(apiUrl +  `users/${currentUser}`, {
@@ -146,6 +171,14 @@ export class UserRegistrationService {
   }
   
   //add to favorite movies
+   /**
+   * @service DELETE to an API endpoint to delete a user
+   * @param {string} user
+   * @returns success message
+   * @function deleteUser
+   */
+
+
   public deleteUser(user: any): Observable<any> {
     return this.http
       .delete(apiUrl + `users/${currentUser}`, {
@@ -158,7 +191,48 @@ export class UserRegistrationService {
         catchError(this.handleError));
   }
 
+   /**
+   * @service GET to an API endpoint to get favorites for a specific user
+   * @param {string} movieID
+   * @returns favorite movie ID
+   * @function getFavoriteMovies
+   */
+   getFavoriteMovies(movieID: any): Observable<any> {
+    return this.http
+      .get(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  //add to favorite movies
+   /**
+   * @service POST to an API endpoint to add favorites for a specific user
+   * @param {string} movieID
+   * @returns favorite movie ID
+   * @function addFavorite
+   */
+  public addFavorite(movieID: any): Observable<any> {
+    return this.http
+      .post(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        })
+      })
+      .pipe(
+        map(this.extractResponseData), 
+        catchError(this.handleError));
+  }
+
    //delete to favorite movies
+     /**
+   * @service DELETE to an API endpoint to delete favorite movie for a specific user
+   * @param {string} movieID
+   * @returns success message
+   * @function deleteFavorite
+   */
   public deleteFavorite(movieID: any): Observable<any> {
     return this.http
       .delete(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
@@ -170,7 +244,6 @@ export class UserRegistrationService {
       catchError(this.handleError));
   }
 
-  
 
 // Non-typed response extraction
   private extractResponseData(res: Object) {

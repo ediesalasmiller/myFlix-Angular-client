@@ -10,6 +10,7 @@ export class SynopsisComponent implements OnInit {
 
   constructor( 
     @Inject(MAT_DIALOG_DATA)
+    
     public data: {
       Title: string,
       Description: string,
