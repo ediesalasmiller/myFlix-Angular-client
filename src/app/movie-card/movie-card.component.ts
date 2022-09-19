@@ -90,7 +90,7 @@ export class MovieCardComponent implements OnInit {
     }
 
   getFavoriteMovies(movieID: any): void {
-    this.fetchApiData.getFavoriteMovies(movieID).subscribe((resp: any) => {
+    this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
       this.favoriteMovies = resp;
       console.log(this.favoriteMovies);
       return this.favoriteMovies;
@@ -114,6 +114,9 @@ export class MovieCardComponent implements OnInit {
     console.log(id);
     this.fetchApiData.addFavorite(id).subscribe((result) => {
       console.log(result);
+      this.snackBar.open("Successfully added to your favorites!", 'OK', {
+        duration:2000
+      })
       this.ngOnInit();
     })
   }

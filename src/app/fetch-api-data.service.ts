@@ -13,6 +13,7 @@ const token = localStorage.getItem('token');
 //get username stored in local storage
 const currentUser = localStorage.getItem('user');
 
+const movieID = localStorage.getItem('movie._id')
 
 @Injectable({
   providedIn: 'root'
@@ -197,7 +198,7 @@ export class UserRegistrationService {
    * @returns favorite movie ID
    * @function getFavoriteMovies
    */
-   getFavoriteMovies(movieID: any): Observable<any> {
+   getFavoriteMovies(): Observable<any> {
     return this.http
       .get(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
         headers: new HttpHeaders({
@@ -216,7 +217,7 @@ export class UserRegistrationService {
    */
   public addFavorite(movieID: any): Observable<any> {
     return this.http
-      .post(apiUrl + `users/${currentUser}/favorites/${movieID}`, {
+      .post(apiUrl + `users/${currentUser}/favorites/${movieID}`, {}, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         })
